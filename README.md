@@ -1,24 +1,9 @@
-# sustech_flow_frontend
+# SUSTech Flow Backend
 
-## Project setup
-```
-npm install
-```
+这是一个个人制作的大学课程评教网站的前端仓库，访问地址为[SUSTechFlow](http://sustechflow.top/)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+欢迎提出各种issue与PR。
 
-### Compiles and minifies for production
-```
-npm run build
-```
+如果你需要运行此网站，依照Dockerfile直接build即可。
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+数据资源等后续会放出。
