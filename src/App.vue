@@ -1,28 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <Navbar class="navbar"></Navbar>
+        <div class="content">
+            <router-view></router-view>
+        </div>
+        <a style="position:fixed; top:auto; bottom: 0;" href="http://www.beian.miit.gov.cn">粤ICP备20009314号</a>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import Navbar from "./components/Navbar";
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'app',
+        components: {Navbar},
+        data() {
+            return {}
+        }
+    }
 </script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    .navbar {
+        top: 0;
+        position: fixed;
+        width: 100%;
+    }
+    .content {
+        width: 100%;
+        top: 64px;
+        position: absolute;
+    }
 </style>
