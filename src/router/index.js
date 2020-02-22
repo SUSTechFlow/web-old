@@ -3,6 +3,7 @@ import Login from "@/views/Login";
 import Course from "@/views/Course";
 import CourseDetail from "@/views/CourseDetail";
 import Aboutme from "@/views/AboutMe";
+import Profile from "@/views/Profile";
 import Vue from 'vue'
 
 Vue.use(VueRouter);
@@ -12,6 +13,11 @@ const routes = [
         path: '/aboutme',
         name: 'aboutme',
         component: Aboutme
+    },
+    {
+        path: '/profile',
+        name:'profile',
+        component:Profile
     },
     {
         path: '/course/:cid',

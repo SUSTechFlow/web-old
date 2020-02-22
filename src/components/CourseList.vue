@@ -2,11 +2,9 @@
     <div>
         <Table :loading="loading" height="825" size="large" stripe :columns="header" :data="courseList"
                @on-sort-change="sort">
-            <template slot-scope="{ row }" slot="learnt">
-                <i-switch type="primary" :value="row.learnt" @on-change="changeLearnt(row)">
-                    <span slot="open">是</span>
-                    <span slot="close">否</span>
-                </i-switch>
+            <template slot-scope="{ index }" slot="learnt">
+                <Checkbox type="primary" :value="courseList[index].learnt" @on-change="changeLearnt(index)">
+                </Checkbox>
             </template>
         </Table>
         <div style="margin: 10px;overflow: hidden">
@@ -34,7 +32,7 @@
                         align: 'center'
                     },
                     {
-                        title: '课程编号', key: 'cid', sortable: 'custom', render:
+                        title: '课程编号', key: 'cid', sortable: false, render:
                             (h, params) => {
                                 return h('router-link', {
                                     props: {
@@ -44,7 +42,7 @@
                             }
                     },
                     {
-                        title: '课程名称', key: 'name', sortable: 'custom', render:
+                        title: '课程名称', key: 'name', sortable: false, render:
                             (h, params) => {
                                 return h('router-link', {
                                     props: {
@@ -90,8 +88,8 @@
                 this.loading = true;
                 this.currentPage = 1;
                 const compareFn = (a, b) => {
-                    if (parseInt(a[key]) > parseInt(b[key])) return -1;
-                    if (parseInt(a[key]) < parseInt(b[key])) return 1;
+                    if (parseFloat(a[key]) > parseFloat(b[key])) return -1;
+                    if (parseFloat(a[key]) < parseFloat(b[key])) return 1;
                     return 0;
                 };
                 let courseList = this.$store.state.course.courseList;
@@ -102,26 +100,27 @@
                 this.$store.commit('setCourseList', courseList);
                 this.loading = false;
             },
-            async changeLearnt(row) {
+            async changeLearnt(index) {
+                const row = this.courseList[index];
                 if (!row.learnt) {
                     const res = await util.http.post('/learnt_course', {cid: row.cid});
                     if (res.status !== 200) {
                         this.$Message.error('HTTP请求失败');
-                        row.learnt = !row.learnt;
                     } else if (!res.data.success) {
                         this.$Message.error(res.data.msg);
                     } else {
-                        this.$Message.success(res.data.msg)
+                        this.$Message.success(res.data.msg);
+                        row.learnt = !row.learnt;
                     }
                 } else {
                     const res = await util.http.delete('/learnt_course', {params: {cid: row.cid}});
                     if (res.status !== 200) {
                         this.$Message.error('HTTP请求失败');
-                        row.learnt = !row.learnt;
                     } else if (!res.data.success) {
                         this.$Message.error(res.data.msg);
                     } else {
-                        this.$Message.success(res.data.msg)
+                        this.$Message.success(res.data.msg);
+                        row.learnt = !row.learnt;
                     }
                 }
             },

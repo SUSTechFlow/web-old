@@ -7,7 +7,7 @@
                     培养方案查询
                 </p>
             </Col>
-            年份
+            年级
             <Select clearable v-model="grade" size="small" style="width: 100px">
                 <Option v-for="item in gradeList" :value="item" :key="item">{{ item }}</Option>
             </Select>
