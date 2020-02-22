@@ -53,8 +53,6 @@
                     measures[1].data.push(this.commentStatistic['easy'][i*2]);
                     measures[2].data.push(this.commentStatistic['useful'][i*2]);
                 }
-                console.log(dimensions);
-                console.log(measures);
                 return {
                     dimensions: dimensions,
                     measures:measures

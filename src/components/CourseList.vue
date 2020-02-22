@@ -1,7 +1,14 @@
 <template>
     <div>
         <Table :loading="loading" height="825" size="large" stripe :columns="header" :data="courseList"
-               @on-sort-change="sort"></Table>
+               @on-sort-change="sort">
+            <template slot-scope="{ row }" slot="learnt">
+                <i-switch type="primary" :value="row.learnt" @on-change="changeLearnt(row)">
+                    <span slot="open">是</span>
+                    <span slot="close">否</span>
+                </i-switch>
+            </template>
+        </Table>
         <div style="margin: 10px;overflow: hidden">
             <div style="float: right;">
                 <Page show-total :total="end" :page-size="numEachPage" :current.sync="currentPage" show-elevator></Page>
@@ -21,7 +28,13 @@
                 numEachPage: 13,
                 header: [
                     {
-                        title: '课程编号', key: 'cid', sortable:'custom',render:
+                        title: '已修读',
+                        slot: 'learnt',
+                        width: 100,
+                        align: 'center'
+                    },
+                    {
+                        title: '课程编号', key: 'cid', sortable: 'custom', render:
                             (h, params) => {
                                 return h('router-link', {
                                     props: {
@@ -31,7 +44,7 @@
                             }
                     },
                     {
-                        title: '课程名称', key: 'name', sortable:'custom',render:
+                        title: '课程名称', key: 'name', sortable: 'custom', render:
                             (h, params) => {
                                 return h('router-link', {
                                     props: {
@@ -41,26 +54,26 @@
                             }
                     },
                     {
-                        title: '评分总数', key: 'rate_number', align: 'center', sortable:'custom',render:
+                        title: '评分总数', key: 'rate_number', align: 'center', sortable: 'custom', render:
                             (h, params) => {
                                 return h('strong', {}, params.row.rate_number)
                             }
                     },
                     {
-                        title: '喜爱', key: 'likes_percent', align: 'center', sortable:'custom',render:
+                        title: '喜爱', key: 'likes_percent', align: 'center', sortable: 'custom', render:
                             (h, params) => {
                                 return h('strong', {}, params.row.likes_percent + '%')
                             }
                     },
                     {
-                        title: '有用', key: 'useful_percent', align: 'center', sortable:'custom',render:
+                        title: '有用', key: 'useful_percent', align: 'center', sortable: 'custom', render:
                             (h, params) => {
                                 return h('strong', {}, params.row.useful_percent + '%')
                             }
 
                     },
                     {
-                        title: '简单', key: 'easy_percent', align: 'center', sortable:'custom',render:
+                        title: '简单', key: 'easy_percent', align: 'center', sortable: 'custom', render:
                             (h, params) => {
                                 return h('strong', {}, params.row.easy_percent + '%')
                             }
@@ -89,17 +102,59 @@
                 this.$store.commit('setCourseList', courseList);
                 this.loading = false;
             },
+            async changeLearnt(row) {
+                if (!row.learnt) {
+                    const res = await util.http.post('/learnt_course', {cid: row.cid});
+                    if (res.status !== 200) {
+                        this.$Message.error('HTTP请求失败');
+                        row.learnt = !row.learnt;
+                    } else if (!res.data.success) {
+                        this.$Message.error(res.data.msg);
+                    } else {
+                        this.$Message.success(res.data.msg)
+                    }
+                } else {
+                    const res = await util.http.delete('/learnt_course', {params: {cid: row.cid}});
+                    if (res.status !== 200) {
+                        this.$Message.error('HTTP请求失败');
+                        row.learnt = !row.learnt;
+                    } else if (!res.data.success) {
+                        this.$Message.error(res.data.msg);
+                    } else {
+                        this.$Message.success(res.data.msg)
+                    }
+                }
+            },
+            async getLearntCourseList() {
+                let learntCourse = [];
+                if (localStorage.temp_token) {
+                    const res = await util.http.get('/learnt_course');
+                    if (res.status !== 200)
+                        this.$Message.error('HTTP请求失败');
+                    else {
+                        const data = res.data;
+                        if (data.success) {
+                            learntCourse = data.data;
+                        } else {
+                            this.$Message.error(data.msg)
+                        }
+                    }
+                }
+                return learntCourse
+            },
             async getCourseList() {
                 this.loading = true;
-                const response = await util.http.get('/rate');
+                const learntCourse = await this.getLearntCourseList();
+                const courseResponse = await util.http.get('/rate');
                 const faculty = [];
-                if (response.status !== 200) {
+                if (courseResponse.status !== 200) {
                     this.$Message.error('HTTP请求失败');
                     return;
                 }
-                const data = response.data;
-                if (data.success) {
-                    data.data.forEach(course => {
+                const courseData = courseResponse.data;
+                if (courseData.success) {
+                    courseData.data.forEach(course => {
+                        course.learnt = learntCourse.includes(course.cid);
                         course.rate_number = course.ratings / 5;
                         if (course.ratings === 0)
                             course.likes_percent = course.useful_percent = course.easy_percent = 0;
@@ -111,11 +166,11 @@
                         if (!faculty.includes(course.faculty))
                             faculty.push(course.faculty);
                     });
-                    this.$store.commit('setCourseList', data.data);
+                    this.$store.commit('setCourseList', courseData.data);
                     this.$store.commit('setFaculty', faculty);
                     this.loading = false;
                 } else {
-                    this.$Message.error(data.msg)
+                    this.$Message.error(courseData.msg)
                 }
             }
         },
@@ -123,6 +178,9 @@
             this.getCourseList();
         },
         computed: {
+            loggedUser() {
+                return this.$store.state.user.loggedUser;
+            },
             end() {
                 return this.$store.getters.shownCourseList.length;
             },

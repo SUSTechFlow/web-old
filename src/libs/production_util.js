@@ -10,7 +10,7 @@ const tokenHandler = (request) => {
     return request
 };
 util.http = axios.create({
-    baseURL: 'https://www.wycer.cn/api',
+    baseURL: 'https://sustechflow.top/api',
 });
 util.http.interceptors.request.use(tokenHandler);
 export default util;

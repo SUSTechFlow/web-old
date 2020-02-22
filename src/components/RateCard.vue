@@ -28,14 +28,29 @@
             </RadioGroup>
             <br/>
             您有多喜爱这门课：
-            <Rate allow-half clearable v-model="comment.rate.likes"/> {{ comment.rate.likes }} 星
+            <Rate allow-half clearable v-model="comment.rate.likes"/>
+            {{ comment.rate.likes }} 星
             <br/>
+            <div v-if="comment.rate.likes===5">
+                <small style="color: red">注意5星为超神课评分，请谨慎评价！</small>
+                <br/>
+            </div>
             这门课的有用程度：
-            <Rate allow-half clearable v-model="comment.rate.useful"/> {{ comment.rate.useful }} 星
+            <Rate allow-half clearable v-model="comment.rate.useful"/>
+            {{ comment.rate.useful }} 星
             <br/>
+            <div v-if="comment.rate.useful===5">
+                <small style="color: red">注意5星为超神课评分，请谨慎评价！</small>
+                <br/>
+            </div>
             这门课有多简单？：
-            <Rate allow-half clearable v-model="comment.rate.easy"/> {{ comment.rate.easy }} 星
+            <Rate allow-half clearable v-model="comment.rate.easy"/>
+            {{ comment.rate.easy }} 星
             <br/>
+            <div v-if="comment.rate.easy===5">
+                <small style="color: red">注意5星为超神课评分，请谨慎评价！</small>
+                <br/>
+            </div>
             <span v-if="(courseDetail.detail.test_method==='考试'||courseDetail.detail.test_method==='考查')">
             您愿意透露您在这门课的成绩吗？
             <i-switch v-model="comment.willing">
@@ -70,10 +85,10 @@
         props: ['cid', 'courseDetail'],
         data() {
             return {
-                gpaStep :['A+', 'A', 'A-','B+', 'B', 'B-','C+', 'C', 'C-','D+', 'D', 'D-','F'],
-                PFStep:['P','F'],
+                gpaStep: ['A+', 'A', 'A-', 'B+', 'B', 'B-', 'C+', 'C', 'C-', 'D+', 'D', 'D-', 'F'],
+                PFStep: ['P', 'F'],
                 comment: {
-                    willing:false,
+                    willing: false,
                     gpa: 'P',
                     cid: this.cid,
                     anonymous: true,
@@ -97,12 +112,13 @@
                 }
                 this.comment.cid = this.cid;
                 this.comment.commentBy = this.loggedUser;
-                const response = await util.http.put('/comment', this.comment);
-                if (response.status !== 200) {
+                const commentRes = await util.http.put('/comment', this.comment);
+                const learntRes = await util.http.post('/learnt_course', {'cid': this.cid});
+                if (commentRes.status !== 200 || learntRes.status !== 200) {
                     this.$Message.error('HTTP请求失败。');
                     return;
                 }
-                const data = response.data;
+                const data = commentRes.data;
                 this.$Message.success(data.msg);
                 this.$emit('updateDetail');
                 this.$emit('updateComments');
