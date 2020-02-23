@@ -12,7 +12,6 @@
 
 <style scoped>
     .aboutmeBlock {
-        margin-left: 20%;
-        margin-right: 20%;
+        margin-left: 30%;
     }
 </style>

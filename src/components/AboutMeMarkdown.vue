@@ -1,23 +1,16 @@
-<template lang="markdown-latex">
-    # 这里是开发者页面
-    ### 更新日志：
-    - 2月4日，项目开始。
-    - 2月5日，完成登录，注册功能。
-    - 2月6日，完成导航栏。
-    - 2月8日，完成课程过滤检索。
-    - 2月10日，完成课程详情。
-    - 2月12日，完成课程评分。
-    - 2月13日，增加此页面。
-    - 2月13日，添加大量课程，删除了体育类课程以解决其混乱的情况。
-    ### 数学公式测试：
-    $$e^{i\pi}+1=0$$
-    ### 接下来的更新：
-    - 增加评论区的Markdown支持。
-    - 增加评论检索，点赞，举报功能。
+<template>
+    <VueShowdown flavor="vanilla" :markdown="aboutus">
+    </VueShowdown>
 </template>
 
 <script>
+    import aboutus from 'raw-loader!../../markdown/Aboutus.md'
     export default {
         name: 'Markdown',
+        data() {
+            return {
+                aboutus:aboutus
+            }
+        },
     }
 </script>
