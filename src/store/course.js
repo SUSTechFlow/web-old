@@ -9,7 +9,7 @@ const cidFilter = cidPatterns => {
         return patterns.reduce((pre, pattern) => pre || course.cid.search(pattern) !== -1, false)
     }
 };
-const rateFilter = requiredRatings => course => course.ratings >= requiredRatings;
+const rateFilter = requiredRatings => course => course.ratings >= requiredRatings * 5;
 const searchFilter = searchStr => course => course.cid.includes(searchStr.toUpperCase()) || course.name.includes(searchStr) || (course.cid + ' ' + course.name).includes(searchStr);
 const facultyFilter = selectedFaculty => course => (selectedFaculty.length === 0) || selectedFaculty.includes(course.faculty);
 
