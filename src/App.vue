@@ -1,37 +1,43 @@
 <template>
   <div id="app">
-    <Navbar class="navbar"></Navbar>
-    <div class="content">
-      <router-view></router-view>
+    <div class="layout">
+      <Layout>
+        <Header>
+          <Navbar></Navbar>
+        </Header>
+        <Content :style="{ margin: '0 50px', padding: '0 50px' }">
+          <Card>
+            <div style="min-height: 1200px;">
+              <router-view></router-view>
+            </div>
+          </Card>
+        </Content>
+        <Footer class="layout-footer-center">
+          <a style="top:auto; bottom: 0;" href="http://www.beian.miit.gov.cn"
+            >粤ICP备20009314号</a
+          ></Footer
+        >
+      </Layout>
     </div>
-    <a
-      style="position:fixed; top:auto; bottom: 0;"
-      href="http://www.beian.miit.gov.cn"
-      >ç²¤ICPå¤‡20009314å�·</a
-    >
   </div>
 </template>
-
 <script>
 import Navbar from "./components/Navbar";
 
 export default {
   name: "app",
-  components: { Navbar },
-  data() {
-    return {};
-  }
+  components: { Navbar }
 };
 </script>
-<style>
-.navbar {
-  top: 0;
-  position: fixed;
-  width: 100%;
+<style scoped>
+.layout {
+  border: 1px solid #d7dde4;
+  background: #f5f7f9;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
 }
-.content {
-  width: 100%;
-  top: 64px;
-  position: absolute;
+.layout-footer-center {
+  text-align: center;
 }
 </style>
