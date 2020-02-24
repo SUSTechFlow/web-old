@@ -58,7 +58,9 @@
             async getLoggedUser() {
                 const res = await util.http.get('/user');
                 if (res.data.username)
-                    this.$store.commit('setLoggedUser', res.data.username)
+                    this.$store.commit('setLoggedUser', res.data.username);
+                else
+                    localStorage.removeItem('temp_token');
             }
         },
         created() {
