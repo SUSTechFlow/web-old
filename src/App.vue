@@ -6,9 +6,9 @@
     </div>
     <a
       style="position:fixed; top:auto; bottom: 0;"
-      href="http://www.beian.miit.gov.cn"
-      >ç²¤ICPå¤‡20009314å�·</a
-    >
+      href="http://www.beian.miit.gov.cn">
+      粤ICP备20009314号
+    </a>
   </div>
 </template>
 
