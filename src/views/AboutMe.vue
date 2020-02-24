@@ -1,12 +1,12 @@
 <template>
-    <Markdown class="aboutmeBlock"></Markdown>
+    <AboutusMarkdown class="aboutmeBlock"></AboutusMarkdown>
 </template>
 
 <script>
-    import Markdown from "@/components/AboutMeMarkdown";
+    import AboutusMarkdown from "@/components/AboutMeMarkdown";
     export default {
         name: "AboutMe",
-        components: {Markdown},
+        components: {AboutusMarkdown},
     }
 </script>
 

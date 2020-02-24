@@ -6,7 +6,7 @@
 <script>
     import aboutus from 'raw-loader!../../markdown/Aboutus.md'
     export default {
-        name: 'Markdown',
+        name: 'AboutusMarkdown',
         data() {
             return {
                 aboutus:aboutus

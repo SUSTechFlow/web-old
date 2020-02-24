@@ -5,10 +5,16 @@ import CourseDetail from "@/views/CourseDetail";
 import Aboutme from "@/views/AboutMe";
 import Profile from "@/views/Profile";
 import Vue from 'vue'
+import Guide from "@/views/Guide";
 
 Vue.use(VueRouter);
 
 const routes = [
+    {
+        path: '/guide',
+        name: 'guide',
+        component: Guide
+    },
     {
         path: '/aboutme',
         name: 'aboutme',

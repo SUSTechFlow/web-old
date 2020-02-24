@@ -1,5 +1,5 @@
 <template>
-    <Menu class="navbar" mode="horizontal" theme="light" active-name="course">
+    <Menu class="navbar" mode="horizontal" theme="light" :active-name="activeItem">
         <MenuItem v-if="!this.loggedUser" to="/login" name="login">
             <Icon type="ios-people"/>
             登录
@@ -18,9 +18,13 @@
                 <Button type="default" to="/login" id="logout" name="logout" @click="logout()">登出</Button>
             </MenuItem>
         </Submenu>
-        <MenuItem name="courses" to="/course" >
+        <MenuItem name="course" to="/course" >
             <Icon type="ios-calendar" />
             探索课程
+        </MenuItem>
+        <MenuItem name="guide" to="/guide" >
+            <Icon type="md-build" />
+            使用指南
         </MenuItem>
         <MenuItem name="aboutme" to="/aboutme" >
             <Icon type="logo-android" />
@@ -37,6 +41,11 @@
 
     export default {
         name: "Navbar",
+        data(){
+            return {
+                activeItem:"course"
+            }
+        },
         components: {
             'Menu': Menu,
             'MenuItem': MenuItem
@@ -57,7 +66,14 @@
         },
         computed: mapState({
             loggedUser: state => state.user.loggedUser
-        })
+        }),
+        watch:{
+            '$route' (to){
+                this.activeItem = to.name;
+                if (to.name === 'courseDetail')
+                    this.activeItem = 'course';
+            }
+        }
     }
 </script>
 
