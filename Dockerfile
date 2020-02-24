@@ -1,6 +1,7 @@
 FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
+COPY yarn.lock ./
 RUN yarn install
 COPY . .
 RUN mv src/libs/production_util.js src/libs/util.js
