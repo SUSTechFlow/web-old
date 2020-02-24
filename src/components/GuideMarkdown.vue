@@ -1,16 +1,15 @@
 <template>
-    <VueShowdown flavor="vanilla" :markdown="guide">
-    </VueShowdown>
+  <VueShowdown flavor="vanilla" :markdown="guide"> </VueShowdown>
 </template>
 
 <script>
-    import guide from 'raw-loader!../../markdown/Guide.md'
-    export default {
-        name: 'GuideMarkdown',
-        data() {
-            return {
-                guide:guide
-            }
-        },
-    }
+import guide from "@/markdown/Guide.md";
+export default {
+  name: "GuideMarkdown",
+  data() {
+    return {
+      guide: guide
+    };
+  }
+};
 </script>
