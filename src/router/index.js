@@ -2,7 +2,7 @@ import VueRouter from 'vue-router'
 import Login from "@/views/Login";
 import Course from "@/views/Course";
 import CourseDetail from "@/views/CourseDetail";
-import Aboutme from "@/views/AboutMe";
+import AboutUs from "@/views/AboutUs";
 import Profile from "@/views/Profile";
 import Vue from 'vue'
 import Guide from "@/views/Guide";
@@ -16,9 +16,9 @@ const routes = [
         component: Guide
     },
     {
-        path: '/aboutme',
-        name: 'aboutme',
-        component: Aboutme
+        path: '/aboutus',
+        name: 'aboutus',
+        component: AboutUs
     },
     {
         path: '/profile',

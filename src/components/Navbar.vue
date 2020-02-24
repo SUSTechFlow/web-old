@@ -26,7 +26,7 @@
             <Icon type="md-build" />
             使用指南
         </MenuItem>
-        <MenuItem name="aboutme" to="/aboutme" >
+        <MenuItem name="aboutus" to="/aboutus" >
             <Icon type="logo-android" />
             关于开发者
         </MenuItem>

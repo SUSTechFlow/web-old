@@ -12,8 +12,6 @@
 </template>
 
 <script>
-    import util from "@/libs/util";
-
     export default {
         name: "LearntCourseList",
         props:['learntCourseDetailPromise'],
