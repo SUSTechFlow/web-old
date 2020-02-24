@@ -5,7 +5,7 @@
                 <Input type="username" v-model="registerForm.username"/>
             </FormItem>
             <FormItem label="邮箱" prop="email">
-                <Input v-model="registerForm.email">
+                <Input type="tel" v-model="registerForm.email">
                     <Select v-model="suffix" slot="append" style="width: 180px">
                         <Option value="@mail.sustech.edu.cn">@mail.sustech.edu.cn</Option>
                         <Option value="@sustech.edu.cn">@sustech.edu.cn</Option>
