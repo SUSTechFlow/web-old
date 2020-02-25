@@ -51,7 +51,7 @@
                     callback(new Error('验证码不能为空'));
                 else {
                     const response = await util.http.post('verify', {
-                            email: this.registerForm.email,
+                            email: this.registerForm.email+this.suffix,
                             vcode: this.registerForm.verifyCode.toString()
                         }
                     );

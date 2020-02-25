@@ -24,7 +24,7 @@
         </MenuItem>
         <MenuItem name="guide" to="/guide" >
             <Icon type="md-build" />
-            使用指南
+            使用指北与群号汇总
         </MenuItem>
         <MenuItem name="aboutus" to="/aboutus" >
             <Icon type="logo-android" />

@@ -1,5 +1,5 @@
 <template>
-  <VueShowdown flavor="vanilla" :markdown="guide"> </VueShowdown>
+  <VueShowdown  :options="{ tables: true }" flavor="vanilla" :markdown="guide"> </VueShowdown>
 </template>
 
 <script>
