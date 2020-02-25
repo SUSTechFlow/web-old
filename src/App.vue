@@ -1,37 +1,29 @@
 <template>
-  <div id="app">
-    <Navbar class="navbar"></Navbar>
-    <div class="content">
-      <router-view></router-view>
-    </div>
-    <a
-      style="position:fixed; top:auto; bottom: 0;"
-      href="http://www.beian.miit.gov.cn">
-      粤ICP备20009314号
-    </a>
-  </div>
+  <v-app>
+    <CoreDrawer />
+    <CoreToolbar />
+    <CoreView />
+    <!-- <BottomNav /> -->
+    <CoreFooter />
+  </v-app>
 </template>
 
-<script>
-import Navbar from "./components/Navbar";
+<script lang="ts">
+import Vue from "vue";
+import CoreDrawer from "@/components/common/Drawer.vue";
+import CoreView from "@/components/common/View.vue";
+import CoreToolbar from "@/components/common/Toolbar.vue";
+import CoreFooter from "@/components/common/Footer.vue";
+// import BottomNav from "@/components/common/BottomNav.vue";
 
-export default {
-  name: "app",
-  components: { Navbar },
-  data() {
-    return {};
+export default Vue.extend({
+  name: "App",
+  components: {
+    CoreDrawer,
+    CoreView,
+    CoreToolbar,
+    CoreFooter
+    // BottomNav
   }
-};
+});
 </script>
-<style>
-.navbar {
-  top: 0;
-  position: fixed;
-  width: 100%;
-}
-.content {
-  width: 100%;
-  top: 64px;
-  position: absolute;
-}
-</style>

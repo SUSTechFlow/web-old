@@ -1,0 +1,86 @@
+{
+    "locale": "SUSTech English",
+    "page": {
+        "signin": "Sign in",
+        "signup": "Sign up"
+    },
+    "sex": {
+        "male": "Male",
+        "female": "Female"
+    },
+    "role": {
+        "visitor": "Visitor",
+        "student": "Student",
+        "teacher": "Teacher",
+        "admin": "Admin"
+    },
+    "field": {
+        "profile": {
+            "nickname": "Nickname",
+            "name": "Name",
+            "email": "Email",
+            "QQ": "QQ",
+            "locale": "Preferred language",
+            "username": "CAS Username",
+            "password": "CAS Password",
+            "bio": "Bio",
+            "gender": "Gender",
+            "hide_email": "hide the Email",
+            "hide_QQ": "hide the QQ",
+            "hide_bio": "hide the bio",
+            "hide_gender": "hide the gender"
+
+        },
+        "username": "Username",
+        "password": "Password",
+        "department": "Department",
+        "semester": "Semester",
+        "keyword": "Keyword"
+    },
+    "count": {
+        "credit": "no credit | one credit | {n} credits"
+    },
+    "hint": {
+        "noCourse": "QwQ, no course selected",
+        "GPA": "GPA of selected course(s)",
+        "courseKeyword": "Name or ID of course"
+    },
+    "warning": {
+        "noCourse": "Course data has not been synchronized"
+    },
+    "profile": {
+        "title": "Edit Profile",
+        "avatar": "Public Avatar",
+        "settings": "Main Settings",
+        "privacy": "Privacy Settings",
+        "update": "Update Profile",
+        "reset": "Reset",
+        "sync": "Sync now!",
+        "cas": "CAS Settings"
+    },
+    "form": {
+        "submit": "Submit",
+        "required": "{field} is required"
+    },
+    "nav": {
+        "home": "Home",
+        "status": "Status",
+        "problem": "Problem",
+        "group": "Group",
+        "contest": "Contest",
+        "discussion": "Discussion",
+        "profile": "Profile",
+        "logout": "Logout",
+        "course": "Course",
+        "about": "About"
+    },
+    "course": {
+        "learnt": "Learnt",
+        "cid": "Course ID",
+        "name": "Course Name",
+        "ratings": "Number of ratings",
+        "likes": "Likes",
+        "usefuls": "Usefuls",
+        "esays": "Easys"
+    }
+}

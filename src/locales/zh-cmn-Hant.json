@@ -1,0 +1,65 @@
+{
+    "locale": "繁體中文",
+    "gender":"test1",
+    "page": {
+        "signin": "登錄"
+    },
+    "role": {
+        "visitor": "遊客",
+        "student": "學生",
+        "teacher": "教師",
+        "admin": "管理員"
+    },
+    "sex": {
+        "male": "男",
+        "female": "女"
+    },
+    "field": {
+        "profile": {
+            "nickname": "昵稱",
+            "name": "姓名", 
+            "email": "郵箱",
+            "QQ": "QQ",
+            "locale": "語言偏好",
+            "username": "CAS 用戶名",
+            "password": "CAS 密碼",
+            "bio":"個人簡介",
+            "gender": "性別",
+            "hide_email": "隱藏郵箱",
+            "hide_QQ": "隱藏QQ",
+            "hide_bio": "隱藏個人簡介",
+            "hide_gender": "隱藏性別"
+
+        },
+        "studentID": "學號",
+        "password": "CAS密碼",
+        "department": "院系",
+        "semester": "學期",
+        "keyword": "關鍵詞"
+    },
+    "count": {
+        "credit": "{n} 學分"
+    },
+    "hint": {
+        "noCourse": "QwQ, 您沒有選中課程哦",
+        "GPA": "選中課程的GPA",
+        "course": "課程名字或者課程編號"
+    },
+    "warning": {
+        "noCourse": "課程數據還未同步"
+    },
+    "profile": {
+        "title": "編輯個人信息",
+        "avatar": "頭像",
+        "settings": "主要設置",
+        "privacy": "隱私設置",
+        "update": "更新個人信息",
+        "reset": "重置",
+        "sync": "同步 啟動！",
+        "cas": "CAS設置"
+    },
+    "form": {
+        "submit": "提交",
+        "required": "{field} 是必填項目"
+    }
+}

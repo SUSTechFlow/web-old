@@ -1,0 +1,63 @@
+{
+    "locale": "简体中文",
+    "gender": "性别",
+    "page": {
+        "signin": "登录",
+        "signup": "注册"
+    },
+    "sex": {
+        "male": "男",
+        "female": "女"
+    },
+    "role": {
+        "visitor": "游客",
+        "student": "学生",
+        "teacher": "教师",
+        "admin": "管理员"
+    },
+    "field": {
+        "profile": {
+            "nickname": "昵称",
+            "name": "姓名",
+            "email": "邮箱",
+            "QQ": "QQ",
+            "locale": "语言偏好",
+            "gender": "性别",
+            "username": "CAS 用户名",
+            "password": "CAS 密码",
+            "bio": "个人简介",
+            "hide_email": "隐藏邮箱",
+            "hide_QQ": "隐藏QQ",
+            "hide_bio": "隐藏个人简介",
+            "hide_gender": "隐藏性别"
+
+        },
+        "studentID": "学号",
+        "username": "用户名",
+        "password": "密码",
+        "department": "院系",
+        "semester": "学期",
+        "keyword": "关键词"
+
+    },
+    "profile": {
+        "title": "编辑个人信息",
+        "avatar": "头像",
+        "settings": "主要设置",
+        "privacy": "隐私设置",
+        "update": "更新个人信息",
+        "reset": "重置"
+    },
+    "form": {
+        "submit": "提交",
+        "required": "{field} 是必填项目"
+    },
+    "nav": {
+        "home": "主页",
+        "status": "状态",
+        "problem": "题目",
+        "group": "小组",
+        "contest": "比赛",
+        "discussion": "讨论"
+    }
+}
