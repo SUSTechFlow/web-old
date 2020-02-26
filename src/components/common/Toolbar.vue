@@ -61,6 +61,9 @@ export default {
       if (item.to || !item.href) return;
       this.$vuetify.goTo(item.href);
     }
+  },
+  created() {
+    this.$store.dispatch("user/recover");
   }
 };
 </script>

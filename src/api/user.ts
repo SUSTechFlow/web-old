@@ -1,5 +1,9 @@
 import http from "@/utils/http";
 
+export function recover(): Record<string, any> {
+  return http.get("/user");
+}
+
 export function signin(
   username: string,
   password: string
