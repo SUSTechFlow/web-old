@@ -23,6 +23,7 @@ export default {
   data() {
     return {
       chartOptions: {
+        colors: ["#f44336", "#2196fe", "#43af50"],
         chart: {
           height: 350,
           type: "area"
