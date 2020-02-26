@@ -129,9 +129,9 @@ export default {
     check(evt) {
       evt.learnt = !evt.learnt;
       if (evt.learnt) {
-        this.$store.dispatch("addLearnt", evt.cid);
+        this.$store.dispatch("user/addLearnt", evt.cid);
       } else {
-        this.$store.dispatch("delLearnt", evt.cid);
+        this.$store.dispatch("user/delLearnt", evt.cid);
       }
     }
   },
