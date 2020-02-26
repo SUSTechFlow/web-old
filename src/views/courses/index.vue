@@ -12,6 +12,9 @@
 <script>
 import CourseList from "@/components/courses/CourseList.vue";
 export default {
+  metaInfo: () => ({
+    title: "SUSTech Flow"
+  }),
   components: {
     CourseList
   }

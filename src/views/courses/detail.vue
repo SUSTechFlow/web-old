@@ -16,6 +16,12 @@ import CourseCard from "@/components/courses/CourseCard";
 import CourseCommentPoster from "@/components/courses/CourseCommentPoster";
 import { get } from "@/api/course";
 export default {
+  metaInfo() {
+    return {
+      title: this.title
+    };
+  },
+
   components: {
     CourseCard,
     Poster: CourseCommentPoster
@@ -37,6 +43,9 @@ export default {
   },
 
   computed: {
+    title() {
+      return `${this.cid} | SUSTech Flow`;
+    },
     cid() {
       return this.$route.params.cid;
     }
