@@ -2,6 +2,7 @@
 import { Module, GetterTree, ActionTree, MutationTree } from "vuex";
 import { RootState } from "../index";
 import { signin } from "@/api/user";
+import { setToken } from "@/utils/auth";
 
 interface User {
   username: string;
@@ -35,6 +36,7 @@ const mutations: MutationTree<UserState> = {
   login(state, user: User) {
     state.error = false;
     state.user = user;
+    setToken(user.token);
   }
 };
 

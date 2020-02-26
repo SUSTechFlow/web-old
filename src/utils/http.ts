@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as config from "@/utils/config";
+import { getToken } from "@/utils/auth";
 
 const service = axios.create({
   baseURL: `${config.VUE_APP_API_HOST}${config.VUE_APP_API_BASE}`,
@@ -9,7 +10,13 @@ const service = axios.create({
 
 // request interceptor
 service.interceptors.request.use(
-  config => config,
+  config => {
+    const token = getToken();
+    if (token) {
+      config.headers.authorization = token;
+    }
+    return config;
+  },
   error => {
     // do something with request error
     console.log(error); // for debug
