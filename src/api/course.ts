@@ -7,3 +7,7 @@ export function get(cid: string): Record<string, any> {
     }
   });
 }
+
+export function getLearnt(): Record<string, any> {
+  return http.get("/learnt_course");
+}

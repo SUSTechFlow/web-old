@@ -2,11 +2,13 @@
 import { Module, GetterTree, ActionTree, MutationTree } from "vuex";
 import { RootState } from "../index";
 import { signin } from "@/api/user";
+import { getLearnt } from "@/api/course";
 import { setToken } from "@/utils/auth";
 
 interface User {
   username: string;
   token: string;
+  learntCourses: Array<string>;
 }
 
 export interface UserState {
@@ -24,6 +26,10 @@ const getters: GetterTree<UserState, RootState> = {
   token(state: UserState): string {
     const { user } = state;
     return (user && user.token) || "";
+  },
+  learnt(state: UserState): Array<string> {
+    const { user } = state;
+    return (user && user.learntCourses) || [];
   }
 };
 
@@ -37,32 +43,38 @@ const mutations: MutationTree<UserState> = {
     state.error = false;
     state.user = user;
     setToken(user.token);
+  },
+  setLearnt(state, cids: Array<string>) {
+    if (state.user) {
+      state.user.learntCourses = cids;
+    }
+  },
+  addLearnt(state, cid: string) {
+    if (state.user) {
+      state.user.learntCourses.push(cid);
+    }
   }
 };
 
 const actions: ActionTree<UserState, RootState> = {
-  // fetchData({ commit }): any {
-  //   axios({
-  //     url: "https://...."
-  //   }).then(
-  //     response => {
-  //       const payload: User = response && response.data;
-  //       commit("profileLoaded", payload);
-  //     },
-  //     error => {
-  //       console.log(error);
-  //       commit("profileError");
-  //     }
-  //   );
-  // }
-  async login({ commit }, { username, password }): Promise<void> {
+  async login({ commit, dispatch }, { username, password }): Promise<void> {
     const res = await signin(username, password);
     if (res.success) {
       const user: User = {
         username: res.username,
-        token: res.temp_token
+        token: res.temp_token,
+        learntCourses: []
       };
       commit("login", user);
+      dispatch("refreshLearnt");
+    } else {
+      throw new Error(res.msg);
+    }
+  },
+  async refreshLearnt({ commit }) {
+    const res = await getLearnt();
+    if (res.success) {
+      commit("setLearnt", res.data);
     } else {
       throw new Error(res.msg);
     }

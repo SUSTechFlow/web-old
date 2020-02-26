@@ -49,6 +49,7 @@ v-card
     )
 </template>
 <script>
+import { mapGetters } from "vuex";
 import { get } from "@/api/rate";
 export default {
   data() {
@@ -57,12 +58,12 @@ export default {
       pageCount: 0,
       itemsPerPage: 15,
       rawCourses: [],
-      learntCourses: [],
       search: "",
       loading: false
     };
   },
   computed: {
+    ...mapGetters({ learntCourses: "user/learnt" }),
     headers() {
       return [
         {
