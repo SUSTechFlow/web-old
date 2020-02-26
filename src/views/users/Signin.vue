@@ -90,7 +90,7 @@ export default {
         ]
       },
       color: "info",
-      icon: "info",
+      icon: "fa-info",
       toggle: false,
       message: null,
       locales: ["en", "zh-cmn-Hans", "zh-cmn-Hant"].map(item => ({
@@ -114,14 +114,14 @@ export default {
             password: this.password.value
           });
           this.color = "success";
-          this.icon = "check_circle";
+          this.icon = "fa-check-circle";
           this.message = "success";
           setTimeout(() => {
             this.$router.replace(this.redirect);
           }, 1000);
         } catch (error) {
           this.color = "error";
-          this.icon = "error";
+          this.icon = "fa-exclamation-circle";
           this.message = "error";
         } finally {
           this.toggle = true;

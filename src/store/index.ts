@@ -1,9 +1,18 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { user } from "./modules/user";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+export interface RootState {
+  drawer: boolean;
+  links: Array<Record<string, string>>;
+}
+
+export default new Vuex.Store<RootState>({
+  modules: {
+    user
+  },
   state: {
     drawer: false,
     links: [
@@ -22,6 +31,5 @@ export default new Vuex.Store({
     setDrawer: (state, payload) => (state.drawer = payload),
     toggleDrawer: state => (state.drawer = !state.drawer)
   },
-  actions: {},
-  modules: {}
+  actions: {}
 });

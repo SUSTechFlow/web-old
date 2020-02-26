@@ -26,7 +26,16 @@
     >
       {{ $t(link.text) }}
     </v-btn>
-    <ToolbarAvatar />
+    <ToolbarAvatar v-if="!!token" />
+    <v-btn
+      v-else
+      class="ml-0 google-font hidden-sm-and-down"
+      style="text-transform: capitalize;"
+      text
+      to="/u/signin"
+    >
+      Sign In
+    </v-btn>
   </v-app-bar>
 </template>
 
@@ -40,7 +49,10 @@ export default {
     ToolbarAvatar
   },
   computed: {
-    ...mapGetters(["links"])
+    ...mapGetters({
+      links: "links",
+      token: "user/token"
+    })
   },
   methods: {
     ...mapMutations(["toggleDrawer"]),

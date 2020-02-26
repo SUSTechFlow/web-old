@@ -7,7 +7,7 @@ v-menu(offset-y  open-on-hover )
       :size="44"
     )
       img(
-        src="http://cdn.wycer.cn/0f2a8a4f-b69d-4331-b236-bd30293a8724"
+        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
         alt="avatar"
       )
   v-list
