@@ -15,3 +15,25 @@ export function get(cid: string): Record<string, any> {
     }
   });
 }
+
+export function post(
+  cid: string,
+  rate: Record<string, number>,
+  willing: boolean,
+  gpa: string,
+  anonymous: boolean,
+  content: string,
+  term: string,
+  taught: string
+): Promise<any> {
+  return http.put("/comment", {
+    cid,
+    willing,
+    gpa,
+    anonymous,
+    rate,
+    content,
+    taught,
+    term
+  });
+}

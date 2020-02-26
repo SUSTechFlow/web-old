@@ -4,7 +4,7 @@
       <v-row wrap align="center" justify="center" row fill-height class="">
         <v-col xs="12" md="10">
           <CourseCard :cid="cid" :name="name" :credit="credit" :ename="ename" :description="description" :plan="plan"/>
-          <Poster></Poster>
+          <Poster :cid="cid" :teachers="teachers" @refresh="fetch"></Poster>
         </v-col>
       </v-row>
     </v-container>
@@ -28,7 +28,14 @@ export default {
   },
 
   data() {
-    return { name: "", ename: "", credit: "0", description: "", plan: [] };
+    return {
+      datas: {},
+      name: "",
+      ename: "",
+      credit: "0",
+      description: "",
+      plan: []
+    };
   },
 
   watch: {
@@ -48,6 +55,10 @@ export default {
     },
     cid() {
       return this.$route.params.cid;
+    },
+    teachers() {
+      if (this?.datas?.taughtBy) return this.datas.taughtBy;
+      return [];
     }
   },
 
@@ -55,6 +66,7 @@ export default {
     async fetch() {
       try {
         const res = await get(this.cid);
+        this.datas = res.data;
         this.name = res.data.name;
         this.ename = res.data.detail.english_name || "";
         this.credit = res.data.detail.credit;

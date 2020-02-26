@@ -115,13 +115,13 @@ const actions: ActionTree<UserState, RootState> = {
   },
   async addLearnt({ commit }, cid: string): Promise<void> {
     const res = await addLearnt(cid);
-    if (res.data.success) {
+    if (res.data) {
       commit("addLearnt", cid);
     }
   },
   async delLearnt({ commit }, cid: string): Promise<void> {
     const res = await delLearnt(cid);
-    if (res.data.success) {
+    if (res.data) {
       commit("delLearnt", cid);
     }
   }

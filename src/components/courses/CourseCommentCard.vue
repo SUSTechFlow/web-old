@@ -1,5 +1,5 @@
 <template>
-  <v-card max-width="344" class="mx-auto">
+  <v-card max-width="360" class="mx-auto">
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title class="headline">Our Changing </v-list-item-title>
