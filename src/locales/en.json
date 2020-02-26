@@ -20,15 +20,15 @@
             "name": "Name",
             "email": "Email",
             "QQ": "QQ",
-            "locale": "Preferred language",
+            "locale": "Language",
             "username": "CAS Username",
             "password": "CAS Password",
             "bio": "Bio",
             "gender": "Gender",
-            "hide_email": "hide the Email",
-            "hide_QQ": "hide the QQ",
-            "hide_bio": "hide the bio",
-            "hide_gender": "hide the gender"
+            "hide_email": "Hide Email",
+            "hide_QQ": "Hide QQ",
+            "hide_bio": "Hide bio",
+            "hide_gender": "Hide gender"
 
         },
         "username": "Username",
@@ -78,9 +78,9 @@
         "learnt": "Learnt",
         "cid": "Course ID",
         "name": "Course Name",
-        "ratings": "Number of ratings",
-        "likes": "Likes",
-        "usefuls": "Usefuls",
-        "esays": "Easys"
+        "ratings": "Ratings",
+        "likes": "Like",
+        "usefuls": "Useful",
+        "esays": "Easy"
     }
 }
