@@ -4,7 +4,7 @@ import { RootState } from "../index";
 import { signin, recover } from "@/api/user";
 import { getLearnt } from "@/api/course";
 import { addLearnt, delLearnt } from "@/api/course";
-import { getToken, setToken } from "@/utils/auth";
+import { getToken, setToken, removeToken } from "@/utils/auth";
 
 interface User {
   username: string;
@@ -44,6 +44,11 @@ const mutations: MutationTree<UserState> = {
     state.error = false;
     state.user = user;
     setToken(user.token);
+  },
+  logout(state) {
+    state.user = undefined;
+    state.error = false;
+    removeToken();
   },
   setLearnt(state, cids: Array<string>) {
     if (state.user) {
@@ -96,6 +101,9 @@ const actions: ActionTree<UserState, RootState> = {
     } else {
       throw new Error(res.msg);
     }
+  },
+  logout({ commit }) {
+    commit("logout");
   },
   async refreshLearnt({ commit }) {
     const res = await getLearnt();
