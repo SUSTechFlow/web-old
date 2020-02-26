@@ -113,7 +113,9 @@ export default {
       try {
         const res = await get();
         this.rawCourses = res.data;
-        console.log(this.courses);
+        this.rawCourses.forEach(item => {
+          item.ratings /= 5;
+        });
       } catch (err) {
         console.log(err);
       } finally {
