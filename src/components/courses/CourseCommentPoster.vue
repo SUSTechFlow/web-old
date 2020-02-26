@@ -14,37 +14,67 @@
       ></v-progress-linear>
     </template>
 
-    <comment class="my-1" :comment="comment"></comment>
     <v-card-text>
-      <v-text-field filled label="Title" value="My new post"></v-text-field>
+      <v-row justify="center" align="center">
+        <v-col cols="12" xs="12" sm="12" md="4" lg="3">
+          <span class="title google-font">Preview</span>
+          <comment class="my-1" :comment="comment"></comment>
+        </v-col>
+        <v-col cols="12" xs="12" sm="12" md="4" lg="3">
+          <!-- <v-text-field filled label="Title" value="My new post"></v-text-field> -->
 
-      <v-textarea
-        v-model="comment.content"
-        filled
-        label="Text"
-        value=""
-      ></v-textarea>
-      <rating v-model="comment.rate.likes" label="Like" color="red"></rating>
-      <rating
-        v-model="comment.rate.useful"
-        label="Useful"
-        color="blue"
-      ></rating>
-      <rating v-model="comment.rate.easy" label="Easy" color="green"></rating>
-      <v-divider class="my-2"></v-divider>
+          <div>
+            <span class="google-font text-uppercase">您的上课学期：</span>
+          </div>
+          <v-btn-toggle v-model="term" class="ma-3">
+            <v-btn>
+              <v-icon class="mr-1" color="green">fa-seedling</v-icon>
+              春
+            </v-btn>
 
-      <v-item-group multiple>
-        <v-subheader>Tags</v-subheader>
-        <v-item v-for="n in 8" :key="n" v-slot:default="{ active, toggle }">
-          <v-chip
-            active-class="purple--text"
-            :input-value="active"
-            @click="toggle"
-          >
-            Tag {{ n }}
-          </v-chip>
-        </v-item>
-      </v-item-group>
+            <v-btn>
+              <v-icon class="mr-1" color="red darken-2"
+                >fa-umbrella-beach</v-icon
+              >
+              夏
+            </v-btn>
+
+            <v-btn>
+              <v-icon class="mr-1" color="orange darken-2">fa-apple-alt</v-icon>
+              秋
+            </v-btn>
+
+            <v-btn disabled>
+              <v-icon class="mr-1" color="blue lighten-3">fa-snowflake</v-icon>
+              冬
+            </v-btn>
+          </v-btn-toggle>
+          <v-textarea
+            v-model="comment.content"
+            placeholder="留下客官您友好的评论吧QwQ（虽然不留也行的啦"
+            filled
+            label="评论"
+            value=""
+          ></v-textarea>
+        </v-col>
+        <v-col cols="12" xs="12" sm="12" md="4" lg="3">
+          <rating
+            v-model="comment.rate.likes"
+            label="Like"
+            color="red"
+          ></rating>
+          <rating
+            v-model="comment.rate.useful"
+            label="Useful"
+            color="blue"
+          ></rating>
+          <rating
+            v-model="comment.rate.easy"
+            label="Easy"
+            color="green"
+          ></rating>
+        </v-col>
+      </v-row>
     </v-card-text>
 
     <v-divider></v-divider>
@@ -52,13 +82,14 @@
     <v-card-actions>
       <v-card-actions>
         <v-switch
-          v-model="autoUpdate"
-          :disabled="isUpdating"
+          v-model="anonymous"
           class="mt-0"
           color="green lighten-2"
           hide-details
           label="Anonymous"
         ></v-switch>
+        <v-spacer></v-spacer>
+        <v-btn text>submit</v-btn>
       </v-card-actions>
     </v-card-actions>
   </v-card>
@@ -66,20 +97,13 @@
 <script>
 import CourseCommentCard from "@/components/courses/CourseCommentCard";
 import CourseCommentRating from "@/components/courses/CourseCommentRating";
+import { mapGetters } from "vuex";
 export default {
   components: {
     comment: CourseCommentCard,
     rating: CourseCommentRating
   },
   data() {
-    const srcs = {
-      1: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
-      2: "https://cdn.vuetifyjs.com/images/lists/2.jpg",
-      3: "https://cdn.vuetifyjs.com/images/lists/3.jpg",
-      4: "https://cdn.vuetifyjs.com/images/lists/4.jpg",
-      5: "https://cdn.vuetifyjs.com/images/lists/5.jpg"
-    };
-
     return {
       comment: {
         username:
@@ -95,44 +119,33 @@ export default {
         rate: {
           likes: 3,
           useful: 4.5,
-          easy: 3,
-          ratings: 5
+          easy: 3
         },
         taught: ["程然"],
-        helpful: 0,
-        year: 2020,
-        month: 2,
-        day: 24
+        helpful: 0
       },
-      autoUpdate: true,
-      friends: ["Sandra Adams", "Britta Holt"],
-      isUpdating: false,
-      name: "Midnight Crew",
-      people: [
-        { header: "Group 1" },
-        { name: "Sandra Adams", group: "Group 1", avatar: srcs[1] },
-        { name: "Ali Connors", group: "Group 1", avatar: srcs[2] },
-        { name: "Trevor Hansen", group: "Group 1", avatar: srcs[3] },
-        { name: "Tucker Smith", group: "Group 1", avatar: srcs[2] },
-        { divider: true },
-        { header: "Group 2" },
-        { name: "Britta Holt", group: "Group 2", avatar: srcs[4] },
-        { name: "Jane Smith ", group: "Group 2", avatar: srcs[5] },
-        { name: "John Smith", group: "Group 2", avatar: srcs[1] },
-        { name: "Sandra Williams", group: "Group 2", avatar: srcs[3] }
-      ],
-      title: "The summer breeze"
+      title: "The summer breeze",
+      anonymous: true,
+      term: undefined
     };
   },
 
   watch: {
-    isUpdating(val) {
-      if (val) {
-        setTimeout(() => (this.isUpdating = false), 3000);
-      }
+    anonymous() {
+      this.comment.commentBy = this.anonymous
+        ? this.$t("anonymous")
+        : this.username;
+    },
+    term() {
+      this.comment.term = ["春", "夏", "秋", "冬"][this.term];
     }
   },
 
+  computed: {
+    ...mapGetters({
+      username: "user/username"
+    })
+  },
   methods: {
     remove(item) {
       const index = this.friends.indexOf(item.name);
