@@ -3,6 +3,7 @@ import { Module, GetterTree, ActionTree, MutationTree } from "vuex";
 import { RootState } from "../index";
 import { signin } from "@/api/user";
 import { getLearnt } from "@/api/course";
+import { addLearnt, delLearnt } from "@/api/course";
 import { setToken } from "@/utils/auth";
 
 interface User {
@@ -53,6 +54,17 @@ const mutations: MutationTree<UserState> = {
     if (state.user) {
       state.user.learntCourses.push(cid);
     }
+  },
+  delLearnt(state, cid: string) {
+    if (state.user) {
+      const arr = state.user.learntCourses;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === cid) {
+          arr.splice(i, 1);
+          i--;
+        }
+      }
+    }
   }
 };
 
@@ -77,6 +89,18 @@ const actions: ActionTree<UserState, RootState> = {
       commit("setLearnt", res.data);
     } else {
       throw new Error(res.msg);
+    }
+  },
+  async addLearnt({ commit }, cid: string): Promise<void> {
+    const res = await addLearnt(cid);
+    if (res.data.success) {
+      commit("addLearnt", cid);
+    }
+  },
+  async delLearnt({ commit }, cid: string): Promise<void> {
+    const res = await delLearnt(cid);
+    if (res.data.success) {
+      commit("delLearnt", cid);
     }
   }
 };

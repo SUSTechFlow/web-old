@@ -37,9 +37,10 @@ v-card
       router-link(:to="`/courses/${item.cid}`") {{ item.name }}
     template(v-slot:item.learnt="{ item }")
       v-simple-checkbox(
-        v-model="item.learnt"
+        :value="item.learnt"
         :ripple="false"
         color="primary"
+        @input="check(item)"
       )
   div.text-center.pt-2
     v-pagination(
@@ -70,7 +71,7 @@ export default {
           text: this.$t("course.learnt"),
           value: "learnt",
           align: "center",
-          width: "100px"
+          width: "120px"
         },
         { text: this.$t("course.cid"), value: "cid", width: "150px" },
         { text: this.$t("course.name"), value: "name", width: "380px" },
@@ -124,6 +125,14 @@ export default {
     },
     select(event) {
       console.log(event);
+    },
+    check(evt) {
+      evt.learnt = !evt.learnt;
+      if (evt.learnt) {
+        this.$store.dispatch("addLearnt", evt.cid);
+      } else {
+        this.$store.dispatch("delLearnt", evt.cid);
+      }
     }
   },
   created() {
