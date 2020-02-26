@@ -83,19 +83,19 @@ export default {
           text: this.$t("course.likes"),
           value: "likes",
           align: "center",
-          width: "100px"
+          width: "120px"
         },
         {
           text: this.$t("course.usefuls"),
           value: "useful",
           align: "center",
-          width: "100px"
+          width: "140px"
         },
         {
           text: this.$t("course.esays"),
           value: "easy",
           align: "center",
-          width: "100px"
+          width: "120px"
         }
       ];
     },

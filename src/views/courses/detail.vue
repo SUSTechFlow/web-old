@@ -22,13 +22,14 @@ export default {
   },
 
   data() {
-    return { name: "", credit: 0, description: "", plan: [] };
+    return { name: "", ename: "", credit: "0", description: "", plan: [] };
   },
 
   watch: {
     $route() {
       this.name = "";
-      this.credit = 0;
+      this.ename = "";
+      this.credit = "0";
       this.description = "";
       this.plan = [];
       this.fetch();
@@ -46,7 +47,7 @@ export default {
       try {
         const res = await get(this.cid);
         this.name = res.data.name;
-        this.ename = res.data.detail.english_name;
+        this.ename = res.data.detail.english_name || "";
         this.credit = res.data.detail.credit;
         this.description = res.data.detail.detail;
         this.plan = res.data.plan;

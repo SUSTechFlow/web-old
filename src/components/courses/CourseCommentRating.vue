@@ -35,8 +35,11 @@ export default {
   },
   data() {
     return {
-      rating: ""
+      rating: 5.0
     };
+  },
+  mounted() {
+    this.rating = parseFloat(this.value);
   },
   watch: {
     rating() {

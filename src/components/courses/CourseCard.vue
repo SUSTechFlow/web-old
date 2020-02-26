@@ -3,8 +3,6 @@
     :loading="name === ''"
     transition="fade-transition"
     type="article"
-    :boilerplate="boilerplate"
-    :tile="tile"
     class="mx-auto"
   >
     <v-card class="mx-auto">

@@ -4,7 +4,6 @@
     height="350"
     :options="chartOptions"
     :series="series"
-    :colors="colors"
   ></apexchart>
 </template>
 <script>
@@ -21,7 +20,7 @@ export default {
       default: ""
     }
   },
-  data: function() {
+  data() {
     return {
       chartOptions: {
         chart: {
