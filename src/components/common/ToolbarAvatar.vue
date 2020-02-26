@@ -3,13 +3,9 @@ v-menu(offset-y  open-on-hover )
   template(v-slot:activator="{ on }")
     v-avatar(
       v-on="on"
-      color="grey lighten-4"
       :size="44"
     )
-      img(
-        src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
-        alt="avatar"
-      )
+      v-icon mdi-account-circle
   v-list
     v-list-item(to="/profile")
       v-list-item-title {{ $t('nav.profile') }}
@@ -22,7 +18,7 @@ export default {
   name: "ToolbarAvatar",
   methods: {
     logout() {
-      console.log("logout");
+      this.$store.dispatch("user/logout");
     }
   }
 };
