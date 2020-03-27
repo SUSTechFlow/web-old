@@ -45,11 +45,6 @@ const routes = [
     component: () => import(`@/layouts/Account.vue`),
     children: [
       {
-        path: "",
-        component: () => import("@/views/users/Account.vue"),
-        name: "account"
-      },
-      {
         path: "signin",
         component: () => import("@/views/users/Signin.vue"),
         name: "signin"

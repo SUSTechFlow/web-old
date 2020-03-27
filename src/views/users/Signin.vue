@@ -64,7 +64,7 @@ v-hover(v-slot:default="{ hover }")
 <script>
 export default {
   metaInfo: () => ({
-    title: "IOJ | Sign In"
+    title: "Sign In | SUSTech Flow"
   }),
   data() {
     return {

@@ -43,7 +43,6 @@ service.interceptors.response.use(
     return res;
   },
   error => {
-    console.log("err?"); // for debug
     console.log(error);
     // Message({
     //   message: error.message,
