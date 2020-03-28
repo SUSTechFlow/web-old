@@ -125,9 +125,6 @@ export default {
     identifyCode() {
       this.drawPic();
     }
-  },
-  mounted() {
-    this.refresh();
   }
 };
 </script>

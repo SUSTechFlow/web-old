@@ -27,6 +27,7 @@ v-hover(v-slot:default="{ hover }")
             v-model="email"
             label="Email"
             suffix="@mail.sustech.edu.cn"
+            :rules="[rules.email.dight]"
           )
           v-row
             v-col(
@@ -34,7 +35,7 @@ v-hover(v-slot:default="{ hover }")
               md="8"
             )
               v-text-field(
-                v-model="rep"
+                v-model="identifyCode_"
                 label="Verification code"
               )
             v-col(
@@ -127,6 +128,7 @@ v-hover(v-slot:default="{ hover }")
 </template>
 
 <script>
+import { verify } from "@/api/user";
 import { randomString } from "@/utils/random";
 import Captcha from "@/components/Captcha";
 export default {
@@ -155,6 +157,11 @@ export default {
       rpassword: "",
       identifyCode: "",
       identifyCode_: "",
+      rules: {
+        email: {
+          dight: v => /^[\d]+$/.test(v) || "Number only!"
+        }
+      },
       usernameRules: [
         v => !!v || "Username is required",
         v => (v && /^[\da-z]+$/i.test(v)) || "Invalid character!",
@@ -193,7 +200,20 @@ export default {
       this.toggle = false;
     },
     async onVerify() {
-      this.step++;
+      if (
+        this.identifyCode.toLowerCase() === this.identifyCode_.toLowerCase()
+      ) {
+        try {
+          await verify(`${this.email}@mail.sustech.edu.cn`);
+          this.step++;
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        alert("Wrong identify code");
+        this.refresh();
+        this.identifyCode_ = "";
+      }
     },
     async onSubmit() {
       if (this.$refs.form.validate()) {
@@ -204,7 +224,7 @@ export default {
           await this.$store.dispatch("Signup", {
             username,
             password,
-            inviteCode
+            code: this.code
           });
           this.color = "success";
           this.icon = "check_circle";

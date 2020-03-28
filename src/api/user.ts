@@ -21,3 +21,9 @@ export function signup(cid: string): Record<string, any> {
     }
   });
 }
+
+export function verify(email: string): Record<string, any> {
+  return http.post("/register_link", {
+    email
+  });
+}
