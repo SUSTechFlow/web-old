@@ -234,7 +234,6 @@ export default {
       if (index >= 0) this.friends.splice(index, 1);
     },
     async submit() {
-      console.log(this.comment);
       try {
         const res = await post(
           this.cid,
