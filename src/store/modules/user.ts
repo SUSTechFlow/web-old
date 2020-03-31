@@ -1,7 +1,7 @@
 // profile/index.ts
 import { Module, GetterTree, ActionTree, MutationTree } from "vuex";
 import { RootState } from "../index";
-import { signin, recover } from "@/api/user";
+import { signin, signup, recover } from "@/api/user";
 import { getLearnt } from "@/api/course";
 import { addLearnt, delLearnt } from "@/api/course";
 import { getToken, setToken, removeToken } from "@/utils/auth";
@@ -90,6 +90,23 @@ const actions: ActionTree<UserState, RootState> = {
   },
   async login({ commit, dispatch }, { username, password }): Promise<void> {
     const res = await signin(username, password);
+    if (res.success) {
+      const user: User = {
+        username: res.username,
+        token: res.temp_token,
+        learntCourses: []
+      };
+      commit("login", user);
+      dispatch("refreshLearnt");
+    } else {
+      throw new Error(res.msg);
+    }
+  },
+  async signup(
+    { commit, dispatch },
+    { username, password, vcode }
+  ): Promise<void> {
+    const res = await signup(username, password, vcode);
     if (res.success) {
       const user: User = {
         username: res.username,

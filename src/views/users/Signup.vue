@@ -117,7 +117,7 @@ v-hover(v-slot:default="{ hover }")
     v-card-actions
       //- v-btn(:disabled="step === 1 || step === 2" text @click="step--") Back
       v-spacer
-      v-btn(v-if="step <3" :disabled="step === 3 || step === 2" color="primary" depressed @click="onVerify") Next
+      v-btn(v-if="step < 3" :disabled="step === 3 || step === 2" color="primary" depressed @click="onVerify") Next
       v-btn(
         v-else
         depressed
@@ -219,12 +219,11 @@ export default {
       if (this.$refs.form.validate()) {
         const username = this.username;
         const password = this.password;
-        const inviteCode = this.ic;
         try {
-          await this.$store.dispatch("Signup", {
+          await this.$store.dispatch("user/signup", {
             username,
             password,
-            code: this.code
+            vcode: this.code
           });
           this.color = "success";
           this.icon = "check_circle";

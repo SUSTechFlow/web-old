@@ -14,11 +14,15 @@ export function signin(
   });
 }
 
-export function signup(cid: string): Record<string, any> {
-  return http.get("/register", {
-    params: {
-      cid
-    }
+export function signup(
+  username: string,
+  password: string,
+  vcode: string
+): Record<string, any> {
+  return http.put("/user", {
+    username,
+    password,
+    vcode
   });
 }
 
