@@ -48,8 +48,8 @@ export default {
           magnificent feat.`
   }),
   created() {
-    const uid = this.$route.params.uid;
-    console.log(uid);
+    // const uid = this.$route.params.uid;
+    // console.log(uid);
     // this.fetchUser(uid);
   }
 };

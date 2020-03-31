@@ -19,7 +19,6 @@ service.interceptors.request.use(
   },
   error => {
     // do something with request error
-    console.log(error); // for debug
     return Promise.reject(error);
   }
 );
@@ -37,13 +36,11 @@ service.interceptors.response.use(
    * You can also judge the status by HTTP Status Code
    */
   response => {
-    console.log(response);
     const res = response.data;
 
     return res;
   },
   error => {
-    console.log(error);
     // Message({
     //   message: error.message,
     //   type: "error",

@@ -73,7 +73,7 @@ export default {
         this.description = res.data.detail.detail;
         this.plan = res.data.plan;
       } catch (error) {
-        console.log(error);
+        alert(error);
       }
     }
   },
