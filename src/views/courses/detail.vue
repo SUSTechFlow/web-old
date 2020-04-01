@@ -3,8 +3,8 @@
     <v-container fluid class="my-4">
       <v-row wrap align="center" justify="center" row fill-height class="">
         <v-col xs="12" md="10">
-          <CourseCard :cid="cid" :name="name" :credit="credit" :ename="ename" :description="description" :plan="plan"/>
-          <Poster :cid="cid" :teachers="teachers" @refresh="fetch"></Poster>
+          <CourseCard v-if="cid" :cid="cid" :name="name" :credit="credit" :ename="ename" :description="description" :plan="plan"/>
+          <Poster v-if="cid" :cid="cid" :teachers="teachers" @refresh="fetch"></Poster>
         </v-col>
       </v-row>
     </v-container>
@@ -45,7 +45,9 @@ export default {
       this.credit = "0";
       this.description = "";
       this.plan = [];
-      this.fetch();
+      if (this.cid) {
+        this.fetch();
+      }
     }
   },
 
@@ -54,7 +56,7 @@ export default {
       return `${this.cid} | SUSTech Flow`;
     },
     cid() {
-      return this.$route.params.cid;
+      return this.$route.params.cid || "";
     },
     teachers() {
       if (this?.datas?.taughtBy) return this.datas.taughtBy;
@@ -79,7 +81,9 @@ export default {
   },
 
   mounted() {
-    this.fetch();
+    if (this.cid) {
+      this.fetch();
+    }
   }
 };
 </script>
