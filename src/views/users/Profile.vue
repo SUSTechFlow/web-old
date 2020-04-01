@@ -19,7 +19,7 @@ v-container(grid-list-xl align="center")
 <script>
 export default {
   data: () => ({
-    avatar: "http://cdn.wycer.cn/0f2a8a4f-b69d-4331-b236-bd30293a8724",
+    avatar: "https://cdn.wycer.cn/0f2a8a4f-b69d-4331-b236-bd30293a8724",
     biograph: `You wrote that yourself? wow congrats dude, really, that's very
           cool. i just told everyone in my family about it, everybody thinks
           that's very impressive and asked me to congratulate you. they want

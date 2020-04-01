@@ -2,8 +2,8 @@
   <v-navigation-drawer v-model="drawer" app temporary>
     <v-col xs="12" class="pl-3 pt-5 grey lighten-5 pb-2">
       <v-img
-        src="http://cdn.wycer.cn/0f2a8a4f-b69d-4331-b236-bd30293a8724"
-        lazy-src="http://cdn.wycer.cn/0f2a8a4f-b69d-4331-b236-bd30293a8724"
+        src="https://cdn.wycer.cn/0f2a8a4f-b69d-4331-b236-bd30293a8724"
+        lazy-src="https://cdn.wycer.cn/0f2a8a4f-b69d-4331-b236-bd30293a8724"
         width="10vh"
       >
         <v-row
