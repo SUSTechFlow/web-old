@@ -102,10 +102,24 @@ export default {
       ];
     },
     courses() {
-      return this.rawCourses.map(course => ({
+      const tmp = this.rawCourses.map(course => ({
         ...course,
         learnt: this.learntCourses.indexOf(course.cid) > -1
       }));
+
+      tmp.forEach(course => {
+        if (course && course.ratings === 0) {
+          return;
+        }
+        const formatter = field => {
+          course[field] /= course.ratings;
+          course[field] = Math.round(course[field] * 100) / 100;
+        };
+        formatter("easy");
+        formatter("useful");
+        formatter("likes");
+      });
+      return tmp;
     }
   },
   methods: {
