@@ -207,7 +207,7 @@ export default {
           await verify(`${this.email}@mail.sustech.edu.cn`);
           this.step++;
         } catch (error) {
-          alert(error);
+          // console.log(error);
         }
       } else {
         alert("Wrong identify code");

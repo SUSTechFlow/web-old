@@ -74,7 +74,7 @@ export default {
         const res = await getStatistics(this.cid);
         this.datas = res.data;
       } catch (error) {
-        alert(error);
+        // console.log(error);
       }
     }
   }

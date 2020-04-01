@@ -166,14 +166,14 @@ export default {
         };
         await this.$store.dispatch("UpdateProfile", data);
       } catch (err) {
-        alert(err);
+        // console.log(err);
       }
     },
     async reset() {
       try {
         await this.$store.dispatch("FetchProfile");
       } catch (err) {
-        alert(err);
+        // console.log(err);
       }
     }
   }

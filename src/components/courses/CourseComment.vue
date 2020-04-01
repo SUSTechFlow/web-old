@@ -53,7 +53,7 @@ export default {
         const res = await get(this.cid);
         this.comments = res.data;
       } catch (error) {
-        alert(error);
+        // console.log(error);
       }
     }
   }

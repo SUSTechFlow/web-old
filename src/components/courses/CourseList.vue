@@ -132,13 +132,10 @@ export default {
           item.ratings /= 5;
         });
       } catch (err) {
-        alert(err);
+        // console.log(err);
       } finally {
         this.loading = false;
       }
-    },
-    select(event) {
-      alert(event);
     },
     check(evt) {
       evt.learnt = !evt.learnt;

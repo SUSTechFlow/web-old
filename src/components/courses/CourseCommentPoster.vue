@@ -249,7 +249,7 @@ export default {
           await this.$store.dispatch("user/addLearnt", this.cid);
         }
       } catch (err) {
-        alert(err);
+        // console.log(err);
       } finally {
         this.dialog = false;
       }
