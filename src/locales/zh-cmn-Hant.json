@@ -1,8 +1,13 @@
 {
-    "locale": "繁體中文",
-    "gender":"test1",
+    "locale": "簡體中文",
+    "gender": "性別",
     "page": {
-        "signin": "登錄"
+        "signin": "登錄",
+        "signup": "注冊"
+    },
+    "sex": {
+        "male": "男",
+        "female": "女"
     },
     "role": {
         "visitor": "遊客",
@@ -10,43 +15,31 @@
         "teacher": "教師",
         "admin": "管理員"
     },
-    "sex": {
-        "male": "男",
-        "female": "女"
-    },
     "field": {
         "profile": {
             "nickname": "昵稱",
-            "name": "姓名", 
+            "name": "姓名",
             "email": "郵箱",
             "QQ": "QQ",
             "locale": "語言偏好",
+            "gender": "性別",
             "username": "CAS 用戶名",
             "password": "CAS 密碼",
-            "bio":"個人簡介",
-            "gender": "性別",
+            "bio": "個人簡介",
             "hide_email": "隱藏郵箱",
             "hide_QQ": "隱藏QQ",
             "hide_bio": "隱藏個人簡介",
             "hide_gender": "隱藏性別"
-
         },
         "studentID": "學號",
-        "password": "CAS密碼",
+        "username": "用戶名",
+        "password": "密碼",
         "department": "院系",
         "semester": "學期",
         "keyword": "關鍵詞"
     },
-    "count": {
-        "credit": "{n} 學分"
-    },
-    "hint": {
-        "noCourse": "QwQ, 您沒有選中課程哦",
-        "GPA": "選中課程的GPA",
-        "course": "課程名字或者課程編號"
-    },
-    "warning": {
-        "noCourse": "課程數據還未同步"
+    "comment": {
+        "commentBy": "{username}評論道"
     },
     "profile": {
         "title": "編輯個人信息",
@@ -54,12 +47,22 @@
         "settings": "主要設置",
         "privacy": "隱私設置",
         "update": "更新個人信息",
-        "reset": "重置",
-        "sync": "同步 啟動！",
-        "cas": "CAS設置"
+        "reset": "重置"
     },
     "form": {
         "submit": "提交",
         "required": "{field} 是必填項目"
+    },
+    "nav": {
+        "home": "主頁",
+        "course": "課程",
+        "about": "關於",
+        "signin": "登錄",
+        "signup": "注冊",
+        "status": "狀態",
+        "problem": "題目",
+        "group": "小組",
+        "contest": "比賽",
+        "discussion": "討論"
     }
 }

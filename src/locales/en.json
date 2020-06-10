@@ -48,6 +48,9 @@
     "warning": {
         "noCourse": "Course data has not been synchronized"
     },
+    "comment": {
+        "commentBy": "Comment By {username}"
+    },
     "profile": {
         "title": "Edit Profile",
         "avatar": "Public Avatar",

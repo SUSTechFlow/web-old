@@ -2,7 +2,9 @@
   <v-card max-width="360" class="mx-auto">
     <v-list-item>
       <v-list-item-content>
-        <v-list-item-title class="headline">Our Changing </v-list-item-title>
+        <v-list-item-title class="headline">
+          {{ $t("comment.commentBy", { username: comment.commentBy }) }}
+        </v-list-item-title>
         <v-list-item-subtitle>{{ description }}</v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
@@ -14,11 +16,12 @@
     <v-card-actions>
       <v-list-item class="grow">
         <v-list-item-avatar>
-          <v-icon> mdi-account-circle</v-icon>
+          <v-icon> mdi-calendar</v-icon>
         </v-list-item-avatar>
-
         <v-list-item-content>
-          <v-list-item-title>{{ comment.commentBy }}</v-list-item-title>
+          <v-list-item-title>{{
+            `${comment.year}-${comment.month}-${comment.day}`
+          }}</v-list-item-title>
         </v-list-item-content>
 
         <v-row align="center" justify="end">
