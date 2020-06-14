@@ -1,0 +1,68 @@
+{
+    "locale": "簡體中文",
+    "gender": "性別",
+    "page": {
+        "signin": "登錄",
+        "signup": "注冊"
+    },
+    "sex": {
+        "male": "男",
+        "female": "女"
+    },
+    "role": {
+        "visitor": "遊客",
+        "student": "學生",
+        "teacher": "教師",
+        "admin": "管理員"
+    },
+    "field": {
+        "profile": {
+            "nickname": "昵稱",
+            "name": "姓名",
+            "email": "郵箱",
+            "QQ": "QQ",
+            "locale": "語言偏好",
+            "gender": "性別",
+            "username": "CAS 用戶名",
+            "password": "CAS 密碼",
+            "bio": "個人簡介",
+            "hide_email": "隱藏郵箱",
+            "hide_QQ": "隱藏QQ",
+            "hide_bio": "隱藏個人簡介",
+            "hide_gender": "隱藏性別"
+        },
+        "studentID": "學號",
+        "username": "用戶名",
+        "password": "密碼",
+        "department": "院系",
+        "semester": "學期",
+        "keyword": "關鍵詞"
+    },
+    "comment": {
+        "commentBy": "{username}評論道"
+    },
+    "profile": {
+        "title": "編輯個人信息",
+        "avatar": "頭像",
+        "settings": "主要設置",
+        "privacy": "隱私設置",
+        "update": "更新個人信息",
+        "reset": "重置"
+    },
+    "form": {
+        "submit": "提交",
+        "required": "{field} 是必填項目"
+    },
+    "nav": {
+        "home": "主頁",
+        "course": "課程",
+        "about": "關於",
+        "signin": "登錄",
+        "signup": "注冊",
+        "status": "狀態",
+        "problem": "題目",
+        "group": "小組",
+        "contest": "比賽",
+        "discussion": "討論"
+    }
+}

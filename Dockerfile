@@ -1,10 +1,10 @@
 FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+COPY yarn.lock ./
+RUN yarn install
 COPY . .
-RUN mv src/libs/production_util.js src/libs/util.js
-RUN npm run build
+RUN yarn build
 
 # production stage
 FROM nginx:stable-alpine as production-stage
