@@ -1,4 +1,4 @@
-# SUSTech Flow Backend
+# SUSTech Flow Frontend
 
 这是一个个人制作的大学课程评教网站的前端仓库，访问地址为[SUSTechFlow](http://sustechflow.top/)
 

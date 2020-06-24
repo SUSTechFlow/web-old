@@ -10,7 +10,11 @@
     </v-list-item>
 
     <v-card-text class="body-1 black--text">
-      {{ comment.content }}
+      <vue-markdown
+        :source="comment.content"
+        :html="false"
+        :typographer="false"
+      ></vue-markdown>
     </v-card-text>
 
     <v-card-actions>
@@ -39,7 +43,12 @@
   </v-card>
 </template>
 <script>
+import VueMarkdown from "vue-markdown";
+
 export default {
+  components: {
+    VueMarkdown
+  },
   props: {
     comment: {
       type: Object,
