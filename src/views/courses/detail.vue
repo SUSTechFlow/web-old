@@ -1,10 +1,23 @@
-<template lang="pug">
+<template>
   <v-content class="pa-0">
     <v-container fluid class="my-4">
       <v-row wrap align="center" justify="center" row fill-height class="">
         <v-col xs="12" md="10">
-          <CourseCard v-if="cid" :cid="cid" :name="name" :credit="credit" :ename="ename" :description="description" :plan="plan"/>
-          <Poster v-if="cid" :cid="cid" :teachers="teachers" @refresh="fetch"></Poster>
+          <CourseCard
+            v-if="cid"
+            :cid="cid"
+            :name="name"
+            :credit="credit"
+            :ename="ename"
+            :description="description"
+            :plan="plan"
+          />
+          <Poster
+            v-if="cid"
+            :cid="cid"
+            :teachers="teachers"
+            @refresh="fetch"
+          ></Poster>
         </v-col>
       </v-row>
     </v-container>
