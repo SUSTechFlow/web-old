@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import HomeStartScreen from "@/components/Home";
+import HomeStartScreen from '@/components/Home';
 
 export default {
   metaInfo: () => ({
-    title: "SUSTech Flow"
+    title: 'SUSTech Flow',
   }),
   components: {
-    HomeStartScreen
-  }
+    HomeStartScreen,
+  },
 };
 </script>
