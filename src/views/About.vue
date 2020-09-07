@@ -48,6 +48,23 @@
           <GitCard :name="maintainer" />
         </v-col>
       </v-row>
+      <v-row align="center" justify="center" fill-height>
+        <v-col xs="12" sm="7" md="8" lg="8" xl="8" class="">
+          <p
+            class="google-font mb-1"
+            style="font-weight: 350;color: #616161;font-size:120%"
+          >
+            Links
+          </p>
+        </v-col>
+      </v-row>
+      <v-row align="center" justify="center" fill-height>
+        <v-col xs="12" sm="7" md="8" lg="8" xl="8" class="">
+          <v-btn x-large color="primary" dark href="https://suste.ch/">
+            <v-icon left>mdi-domain</v-icon>南科导航
+          </v-btn>
+        </v-col>
+      </v-row>
     </v-container>
   </v-content>
 </template>
