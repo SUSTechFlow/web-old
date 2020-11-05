@@ -75,7 +75,8 @@
         "profile": "Profile",
         "logout": "Logout",
         "course": "Course",
-        "about": "About"
+        "about": "About",
+        "market": "Market"
     },
     "course": {
         "learnt": "Learnt",

@@ -1,15 +1,15 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
 // import HomeStartScreen from "../views/HomeStartScreen.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "home",
-    component: Home
+    path: '/',
+    name: 'home',
+    component: Home,
   },
   // {
   //   path: "/qwq",
@@ -17,61 +17,75 @@ const routes = [
   //   component: HomeStartScreen
   // },
   {
-    path: "/about",
-    name: "About",
+    path: '/about',
+    name: 'About',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "about" */ '../views/About.vue'),
   },
 
   {
-    path: "/courses",
-    name: "Course",
-    component: () =>
-      import(/* webpackChunkName: "course_list" */ "../views/courses/index.vue")
-  },
-  {
-    path: "/courses/:cid",
-    name: "Course Detail",
+    path: '/courses',
+    name: 'Course',
     component: () =>
       import(
-        /* webpackChunkName: "course_detail" */ "../views/courses/detail.vue"
-      )
+        /* webpackChunkName: "course_list" */ '../views/courses/index.vue'
+      ),
   },
   {
-    path: "/u",
+    path: '/courses/:cid',
+    name: 'Course Detail',
+    component: () =>
+      import(
+        /* webpackChunkName: "course_detail" */ '../views/courses/detail.vue'
+      ),
+  },
+  {
+    path: '/market',
+    name: 'Market',
+    component: () =>
+      import(/* webpackChunkName: "course_list" */ '../views/market/index.vue'),
+  },
+  {
+    path: '/items/:id',
+    name: 'Item',
+    component: () =>
+      import(/* webpackChunkName: "course_list" */ '../views/items/index.vue'),
+  },
+  {
+    path: '/u',
     component: () => import(`@/layouts/Account.vue`),
     children: [
       {
-        path: "signin",
-        component: () => import("@/views/users/Signin.vue"),
-        name: "signin"
+        path: 'signin',
+        component: () => import('@/views/users/Signin.vue'),
+        name: 'signin',
       },
       {
-        path: "signup",
-        component: () => import("@/views/users/Signup.vue"),
-        name: "signup"
+        path: 'signup',
+        component: () => import('@/views/users/Signup.vue'),
+        name: 'signup',
       },
       {
-        path: "preference",
-        component: () => import("@/views/users/Preference.vue"),
-        name: "preference"
+        path: 'preference',
+        component: () => import('@/views/users/Preference.vue'),
+        name: 'preference',
       },
       {
-        path: ":uid",
-        component: () => import("@/views/users/Profile.vue"),
-        name: "profile"
-      }
-    ]
-  }
+        path: ':uid',
+        component: () => import('@/views/users/Profile.vue'),
+        name: 'profile',
+      },
+    ],
+  },
 ];
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 
 export default router;

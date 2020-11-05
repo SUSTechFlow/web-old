@@ -10,12 +10,12 @@
 </template>
 <script>
 export default {
-  name: "SIdentify",
+  name: 'SIdentify',
   props: {
     identifyCode: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -30,7 +30,7 @@ export default {
       dotColorMin: 0,
       dotColorMax: 255,
       contentWidth: 112,
-      contentHeight: 45
+      contentHeight: 45,
     };
   },
   methods: {
@@ -43,11 +43,11 @@ export default {
       const r = this.randomNum(min, max);
       const g = this.randomNum(min, max);
       const b = this.randomNum(min, max);
-      return "rgb(" + r + "," + g + "," + b + ")";
+      return 'rgb(' + r + ',' + g + ',' + b + ')';
     },
     drawPic() {
-      const canvas = document.getElementById("s-canvas");
-      const ctx = canvas.getContext("2d");
+      const canvas = document.getElementById('s-canvas');
+      const ctx = canvas.getContext('2d');
       // ctx.textBaseline = 'bottom'
       // 绘制背景
       ctx.fillStyle = this.randomColor(
@@ -71,8 +71,8 @@ export default {
     drawText(ctx, txt, i) {
       ctx.fillStyle = this.randomColor(this.colorMin, this.colorMax);
       ctx.font =
-        this.randomNum(this.fontSizeMin, this.fontSizeMax) + "px SimHei"; //字体大小
-      ctx.textBaseline = "alphabetic"; //基线对齐
+        this.randomNum(this.fontSizeMin, this.fontSizeMax) + 'px SimHei'; //字体大小
+      ctx.textBaseline = 'alphabetic'; //基线对齐
       const x = (i + 1) * (this.contentWidth / (this.identifyCode.length + 3));
       const y = this.randomNum(this.fontSizeMax, this.contentHeight / 2);
       const deg = this.randomNum(-30, 30);
@@ -119,12 +119,12 @@ export default {
         );
         ctx.fill(); //通过填充路径的内容区域生成实心的图形。
       }
-    }
+    },
   },
   watch: {
     identifyCode() {
       this.drawPic();
-    }
-  }
+    },
+  },
 };
 </script>
